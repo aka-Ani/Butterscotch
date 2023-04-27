@@ -1,30 +1,30 @@
 const {
     app,
     BrowserWindow,
-	session
+    session
 } = require('electron')
 
 function createWindow() {
     // Create the browser window.
-	const mainWindow = new BrowserWindow({
+    const mainWindow = new BrowserWindow({
         width: 1100,
         height: 750,
         title: "Butterscotch",
-		autoHideMenuBar: true
+        autoHideMenuBar: true
     })
 
     mainWindow.on('page-title-updated', (evt) => {
         evt.preventDefault();
     });
 
-	// Set Access Control headers in response to bypass CORS
+    // Set Access Control headers in response to bypass CORS
     session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
         callback({
             responseHeaders: {
-				'Access-Control-Allow-Origin': ['*'],
-				'Access-Control-Allow-Headers': ['*'],
-				...details.responseHeaders,
-			}
+                'Access-Control-Allow-Origin': ['*'],
+                'Access-Control-Allow-Headers': ['*'],
+                ...details.responseHeaders,
+            }
         });
     });
 
