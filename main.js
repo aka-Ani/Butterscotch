@@ -10,25 +10,19 @@ function createWindow() {
         width: 1100,
         height: 750,
         title: "Butterscotch",
-        autoHideMenuBar: true
+        autoHideMenuBar: true,
+        // Disable webSecurity to bypass CORS
+        webPreferences: {
+            webSecurity: false,
+            allowRunningInsecureContent: false
+        }
     })
 
     mainWindow.on('page-title-updated', (evt) => {
         evt.preventDefault();
     });
 
-    // Set Access Control headers in response to bypass CORS
-    session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
-        callback({
-            responseHeaders: {
-                ...details.responseHeaders,
-                'access-control-allow-origin': ['*'],
-                'access-control-allow-headers': ['*']
-            }
-        });
-    });
-
-    mainWindow.loadURL('https://hoppscotch.io')
+    mainWindow.loadURL('https://hoppscotch.io');
 
 }
 
