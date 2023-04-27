@@ -21,9 +21,9 @@ function createWindow() {
     session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
         callback({
             responseHeaders: {
-                'Access-Control-Allow-Origin': ['*'],
-                'Access-Control-Allow-Headers': ['*'],
                 ...details.responseHeaders,
+                'Access-Control-Allow-Origin': ['*'],
+                'Access-Control-Allow-Headers': ['*']
             }
         });
     });
