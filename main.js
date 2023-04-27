@@ -22,8 +22,8 @@ function createWindow() {
         callback({
             responseHeaders: {
                 ...details.responseHeaders,
-                'Access-Control-Allow-Origin': ['*'],
-                'Access-Control-Allow-Headers': ['*']
+                'access-control-allow-origin': ['*'],
+                'access-control-allow-headers': ['*']
             }
         });
     });
